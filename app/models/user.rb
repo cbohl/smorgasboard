@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	has_many :ratings
 	has_many :comments
 	has_many :users_games
@@ -10,4 +11,5 @@ class User < ActiveRecord::Base
 	validates :username, presence: true
 
 	has_secure_password
+
 end
