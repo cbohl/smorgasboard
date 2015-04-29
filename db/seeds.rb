@@ -1,54 +1,47 @@
 ##############
 # Users 
 ##############
-john = {name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password"}
+john = User.create!(name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password")
 
-frank = {name: "Frank Fees", username: "frank", email: "f@f.com", password: "password"}
+frank = User.create!(name: "Frank Fees", username: "frank", email: "f@f.com", password: "password")
 
-paul = {name: "Paul Pees", username: "pauly", email: "p@p.com", password: "password"}
+paul = User.create!(name: "Paul Pees", username: "pauly", email: "p@p.com", password: "password")
 
-[john, frank, paul].each{ |user| User.create!(user)}
-
-
-##############
+#############
 # Games 
-##############
-andoid = {name: "Andoid: Netfunner", description:"Card game were you fight the evil netfunner corps.", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 15, max_duration_of_game: 45}
+#############
+andoid = Game.create!(name: "Andoid: Netfunner", description:"Card game were you fight the evil netfunner corps.", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 15, max_duration_of_game: 45)
 
-agricocacola = {name: "Agricocacola", description:"Worker playment game where you build a CocaCola factory", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 90}
+agricocacola = Game.create!(name: "Agricocacola", description:"Worker playment game where you build a CocaCola factory", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 90)
 
-life = {name: "Life of Spring", description:"A survival game set in Spring, where evil plants are trying to kill you", min_number_of_players: 2, max_number_of_players: 6, min_duration_of_game: 60, max_duration_of_game: 120}
+life = Game.create!(name: "Life of Spring", description:"A survival game set in Spring, where evil plants are trying to kill you", min_number_of_players: 2, max_number_of_players: 6, min_duration_of_game: 60, max_duration_of_game: 120)
 
-domination = {name: "Domination", description:"Card building game where you kill all the other players", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60}
+domination = Game.create!(name: "Domination", description:"Card building game where you kill all the other players", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60)
 
-battle = {name: "Battlestar Scratchlatica", description:"Hidden traiter game, don't know who is who, don't even know if you are good or bad. I just don't know", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60}
-
-[andoid, agricocacola, life, domination, battle].each{ |game| Game.create!(game)}
+battle = Game.create!(name: "Battlestar Scratchlatica", description:"Hidden traiter game, don't know who is who, don't even know if you are good or bad. I just don't know", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60)
 
 
 ##############
 # Tags
 ##############
-betral = {name: "Betral", description: "You betray people.", type: "mechanic"}
+betral = Tag.create!(name: "Betral", description: "You betray people.", category: "mechanic")
 
-builder = {name: "Builder", description: "A game where the player builds stuff.", type: "mechanic"}
+builder = Tag.create!(name: "Builder", description: "A game where the player builds stuff.", category: "mechanic")
 
-deck = {name: "Deck Builder", description: "Everone starts off the game at even footing, and build a deck to win the game.", type: "mechanic"}
+deck = Tag.create!(name: "Deck Builder", description: "Everone starts off the game at even footing, and build a deck to win the game.", category: "mechanic")
 
-survival = {name: "Survival", description: "Survival type games are where the players are trying to survive harsh conditions.", type: "genre"}
+survival = Tag.create!(name: "Survival", description: "Survival type games are where the players are trying to survive harsh conditions.", category: "genre")
 
-card = {name: "Card Game", description: "A game that main components are cards", type: "genre"}
+card = Tag.create!(name: "Card Game", description: "A game that main components are cards", category: "genre")
 
-zombie = {name: "Zombie", description: "A zombie game is a game where the the theme is zombies...go figure.", type: "genre"}
+zombie = Tag.create!(name: "Zombie", description: "A zombie game is a game where the the theme is zombies...go figure.", category: "genre")
 
-space = {name: "Space", description: "A space game is a game where the setting is in space", type: "genre"}
-
-[betral, builder, deck, survival, card, zombie, space].each{ |tag| Tag.create!(tag)}
+space = Tag.create!(name: "Space", description: "A space game is a game where the setting is in space", category: "genre")
 
 
-##############
-# Tagging 
-##############
+# ##############
+# # Tagging 
+# ##############
 Tagging.create!(game: battle, tag: space)
 Tagging.create!(game: battle, tag: betral)
 
