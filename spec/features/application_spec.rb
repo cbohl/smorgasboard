@@ -21,18 +21,22 @@ end
 
 RSpec.feature "User signing up", type: :feature do
   scenario "when user enter valid credentials" do
-    visit '/login'
-    fill_in('Username', :with => user.username)
-    fill_in('Password', :with => user.password)
-    click('Log In')
-    expect(page).to have_content(user.username)
+    visit '/users/new'
+    fill_in('Name', :with => "Josh")
+    fill_in('Username', :with => "joshz")
+    fill_in('Email', :with => "josh@josh.com")
+    fill_in('Password', :with => "password")
+    click('Sign Up')
+    expect(page).to have_content("Welcome " + user.username)
   end
 
   scenario "when user enter invalid credentials" do
-    visit '/login'
-    fill_in('Username', :with => "Porkchop")
-    fill_in('Password', :with => "Sandwiches")
-    click('Log In')
+    visit '/users/new'
+    fill_in('Name', :with => "")
+    fill_in('Username', :with => "")
+    fill_in('Email', :with => "")
+    fill_in('Password', :with => "")
+    click('Sign Up')
     expect(page).to have_content("Invalid")
   end
 end
