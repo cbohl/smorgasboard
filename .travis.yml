@@ -1,1 +1,4 @@
 language: ruby
+
+before_script:
+  - psql -c 'create database social-gaming_test;' -U postgres
