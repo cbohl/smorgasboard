@@ -1,0 +1,8 @@
+<div class="container">
+  <h1><%= @tag.name %></h1>
+  <h3><%= @tag.description %></h3>
+
+  <% @games.each do |game| %>
+    <li><%= link_to "#{game.name}", game %></li>
+  <% end %>
+</div>

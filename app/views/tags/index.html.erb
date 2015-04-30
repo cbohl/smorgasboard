@@ -1,4 +1,15 @@
-<div>
+<div class="container">
+  <div class="genres">
+    <h1>Genres</h1>
+    <% @genres.each do |genre| %>
+      <li><%= link_to "#{genre.name}", genre %></li>
+    <% end %>
+  </div>  
 
-
+  <div class="mechanics">
+    <h1>Mechanics</h1>
+    <% @mechanics.each do |mech| %>
+      <li><%= link_to "#{mech.name}", mech %></li>
+    <% end %>
+  </div>
 </div>
