@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+	skip_before_filter :require_login
+
 	def new
 		@user = User.new
 	end
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
 	def create
 		@user = User.find_by(username: params[:user][:username])
 		if @user && @user.authenticate(params[:user][:password])
-			session[:id] = @user.id
+			session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else
 			@user = User.new
@@ -16,5 +18,7 @@ class SessionsController < ApplicationController
 	end	
 
 	def destroy
+		session[:id] = nil 
+		redirect_to login_path
 	end
 end

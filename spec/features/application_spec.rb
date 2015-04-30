@@ -24,9 +24,9 @@ RSpec.feature "User signing up", type: :feature do
   scenario "when user enter valid credentials" do
     visit '/users/new'
 
-    fill_in('Name', :with => "Josh")
-    fill_in('Username', :with => "joshz")
-    fill_in('Email', :with => "josh@josh.com")
+    fill_in('Name', :with => "boris")
+    fill_in('Username', :with => "boris")
+    fill_in('Email', :with => "boris@invincible.com")
     fill_in('Password', :with => "password")
     click_button('Create User')
     expect(page).to have_content("Welcome")
