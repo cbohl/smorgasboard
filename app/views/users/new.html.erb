@@ -1,0 +1,10 @@
+<div class="container">
+	<% if @errors %>
+		<% @errors.each do |error| %>
+			<p><%= error %></p>
+		<% end %>
+	<% end %>
+	
+	<%= render partial: 'form', locals: {user: @user} %>
+	
+</div>

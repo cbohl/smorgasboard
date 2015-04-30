@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.feature "User logging in", type: :feature do
   let!(:user) { User.create!(name: "John", email: "jdees@gmail.com", username: "jdees", password: "password") }
@@ -22,22 +23,23 @@ end
 RSpec.feature "User signing up", type: :feature do
   scenario "when user enter valid credentials" do
     visit '/users/new'
+
     fill_in('Name', :with => "Josh")
     fill_in('Username', :with => "joshz")
     fill_in('Email', :with => "josh@josh.com")
     fill_in('Password', :with => "password")
-    click('Sign Up')
-    expect(page).to have_content("Welcome " + user.username)
+    click_button('Create User')
+    expect(page).to have_content("Welcome")
   end
 
   scenario "when user enter invalid credentials" do
     visit '/users/new'
-    fill_in('Name', :with => "")
-    fill_in('Username', :with => "")
-    fill_in('Email', :with => "")
-    fill_in('Password', :with => "")
-    click('Sign Up')
-    expect(page).to have_content("Invalid")
+    fill_in('Name', :with => "josh")
+    fill_in('Username', :with => " ")
+    fill_in('Email', :with => " ")
+    fill_in('Password', :with => " ")
+    click_button('Create User')
+    expect(current_path).to eq('/users')
   end
 end
 
