@@ -39,7 +39,7 @@ RSpec.feature "User signing up", type: :feature do
     fill_in('Email', :with => " ")
     fill_in('Password', :with => " ")
     click_button('Create User')
-    expect(current_path).to eq('/users/new')
+    expect(current_path).to eq('/users')
   end
 end
 
