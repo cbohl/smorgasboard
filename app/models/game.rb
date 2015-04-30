@@ -1,17 +1,18 @@
 class Game < ActiveRecord::Base
+	has_many :user_games, class_name: "UserGame", foreign_key: :game_id
+	has_many :owners, through: :user_games, source: :user
 	has_many :ratings
-	has_many :comments
-	has_many :users_games
-
 	has_many :raters, through: :ratings, source: :user
+	has_many :comments
 	has_many :commenters, through: :comments, source: :user
-	has_many :players, through: :users_games, source: :user
+	has_many :taggings
+	has_many :tags, through: :taggings
 
 	validates :name, presence: true
 
 
 	def average_rating
-		self.ratings/self.ratings.count 
+		(self.ratings.map{ |rating| rating.value }.reduce(:+).to_f)/self.ratings.count 
 	end
 
 	def duration_of_game
