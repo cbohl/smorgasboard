@@ -1,0 +1,19 @@
+header {
+	width:100%;
+	height: 40px;
+	background-color: black;
+}
+
+header h1.brand {
+	margin: 0;
+	display: inline-block;
+}
+
+header nav{
+	float:right;
+}
+
+header nav li{
+	display: inline
+}
+
