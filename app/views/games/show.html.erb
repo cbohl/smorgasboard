@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="game-info">
+    <h1><%= @game.name %></h1>
+    <h3>Average Rating: <%= @game.average_rating %></h3>
+    <h3>Number of Players: <%= @game.min_number_of_players %> - <%= @game.max_number_of_players %></h3>
+    <h3>Duration: <%= @game.min_duration_of_game %> - <%= @game.max_duration_of_game %></h3>
+    <% @tags.each do |tag| %>
+      <%= link_to "#{tag.name}", tag_path(tag) %>
+    <% end %>
+    <p><%= @game.description %></p>
+  </div>
+
+  <div class="comments">
+    <!-- <ul> -->
+      <% @comments.each do |comment| %>
+        <li><%= render partial: 'comments/comment', locals: {comment: comment} %></li>
+        <br>
+      <% end %>
+    <!-- </ul> -->
+  </div>
+
+  <div class="comment-form">
+
+  </div>
+</div>

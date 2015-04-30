@@ -1,0 +1,10 @@
+<header>
+  <h1 class="brand"><a class="navbar-brand" href="/">SmorgasBoard</a></h1>
+  <nav>
+    <% if current_user %>
+      <%= render "layouts/nav_loggedin" %>
+    <% else %>
+      <%= render "layouts/nav_loggedout" %>
+    <% end %>
+  </nav>
+</header>

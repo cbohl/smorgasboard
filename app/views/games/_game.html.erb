@@ -1,0 +1,7 @@
+<%= link_to "#{game.name}", game_path(game) %>
+<%= game.average_rating %>
+<br>
+<% comment = game.comments.sample %>
+<% if comment %>
+  Someone Commented: <%= comment.body %>
+<% end %>
