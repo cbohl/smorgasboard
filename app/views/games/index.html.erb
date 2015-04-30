@@ -1,0 +1,7 @@
+<div class="container">
+  <ul>
+    <% @games.each do |game| %>
+      <li><%= render partial: 'game', locals: {game: game} %></li>
+    <% end %>
+  </ul>
+</div>
