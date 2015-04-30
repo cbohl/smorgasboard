@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+
 
 RSpec.feature "Games", type: :feature do
   context "when a user is not signed in" do
