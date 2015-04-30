@@ -1,1 +1,37 @@
-<h1> Welcome <%= @user.username %>! </h1>
+<div class="container">
+  <% if current_user == @user %>
+    <h1> Welcome back <%= @user.username %>! </h1>
+  <% else %>
+    <h1>Welcome to <%= @user.username %> homepage!</h1>
+  <% end %> 
+
+  <div class="owned-games">
+    <h3><%= @user.name %> owns these games:</h3>
+    <% @games.each do |game| %>
+      <li><%= link_to "#{game.name}", game %></li>
+    <% end %>
+  </div>
+
+  <div class="user-comments">
+    <h3><%= @user.name %> has made these comments:</h3>
+    <% @comments.each do |comment| %>
+      <li>
+        <%= link_to "#{comment.game.name}", comment.game %>
+        <br>
+        <%= comment.body %>
+        <br><br>
+      </li>
+    <% end %>
+  </div>
+
+  <div class="user-ratings">
+    <h3><%= @user.name %> has rated these games:</h3>
+    <% @ratings.each do |rating| %>
+      <li>
+        <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.value %> out of 5
+        <br><br>
+      </li>
+    <% end %>
+  </div>
+
+</div>
