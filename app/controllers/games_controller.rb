@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def index
     @games = Game.all
   end
@@ -9,4 +10,5 @@ class GamesController < ApplicationController
     @comments = @game.comments
     @comment = Comment.new
   end
+
 end

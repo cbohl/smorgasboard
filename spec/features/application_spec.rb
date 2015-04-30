@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+
 
 RSpec.feature "User logging in", type: :feature do
   let!(:user) { User.create!(name: "John", email: "jdees@gmail.com", username: "jdees", password: "password") }
@@ -7,7 +7,7 @@ RSpec.feature "User logging in", type: :feature do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
-    click('Log In')
+    click_button('login')
     expect(page).to have_content("Welcome")
   end
 
@@ -15,8 +15,8 @@ RSpec.feature "User logging in", type: :feature do
     visit '/login'
     fill_in('Username', :with => "Porkchop")
     fill_in('Password', :with => "Sandwiches")
-    click('Log In')
-    expect(page).to have_content("Invalid")
+    click_button('login')
+    expect(page).to have_content("invalid")
   end
 end
 
@@ -24,13 +24,15 @@ RSpec.feature "User signing up", type: :feature do
   scenario "when user enter valid credentials" do
     visit '/users/new'
 
-    fill_in('Name', :with => "Josh")
-    fill_in('Username', :with => "joshz")
-    fill_in('Email', :with => "josh@josh.com")
+    fill_in('Name', :with => "boris")
+    fill_in('Username', :with => "boris")
+    fill_in('Email', :with => "boris@invincible.com")
     fill_in('Password', :with => "password")
     click_button('Create User')
     expect(page).to have_content("Welcome")
   end
+
+
 
   scenario "when user enter invalid credentials" do
     visit '/users/new'
@@ -44,6 +46,8 @@ RSpec.feature "User signing up", type: :feature do
 end
 
 RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
+  let! (:game) { Game.create(name: "Monopoly", description: "Really fun", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 90, max_duration_of_game: 180) }
+  
   scenario "when user visits the games index" do
     visit '/games'
     expect(current_path).to eq '/login'

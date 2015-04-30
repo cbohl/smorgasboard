@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	skip_before_filter :require_login, :only => [:new, :create]
+
 	def index
 		@users = User.all
 	end
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			session[:id] = @user.id
+			session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else
 			@errors = @user.errors.full_messages
@@ -22,6 +24,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by(id: params[:id])
+		@games = @user.owned_games
+		@comments = @user.comments
+		@ratings = @user.ratings
 	end
 
 	private
