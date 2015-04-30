@@ -7,5 +7,6 @@ class GamesController < ApplicationController
     @game = Game.find_by(id: params[:id])
     @tags = @game.tags
     @comments = @game.comments
+    @comment = Comment.new
   end
 end
