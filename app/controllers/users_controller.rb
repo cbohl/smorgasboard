@@ -5,21 +5,28 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		render '/users/_form'
+		render 'new'
 	end
 
 	def create
-		user = User.new(params[:user])
-		if user.save
-			session[:id] = user.id
-			redirect user_path(user)
+		@user = User.new(user_params)
+
+		if @user.save
+			session[:id] = @user.id
+			redirect_to user_path(@user)
 		else
 			@error = 'Invalid'
-			@errors = user.errors.full_messages
+			@errors = @user.errors.full_messages
 			render 'new'
 		end 
 	end
 
 	def show
+		@user = User.find_by(id: params[:id])
 	end
+
+	private
+		def user_params
+			params.require(:user).permit(:name, :username, :password, :email)
+		end
 end
