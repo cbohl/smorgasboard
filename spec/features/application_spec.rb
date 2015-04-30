@@ -41,7 +41,7 @@ RSpec.feature "User signing up", type: :feature do
   end
 end
 
-RSpec.feature "User redirected to login page", type: :feature do
+RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
   scenario "when user visits the games index" do
     visit '/games'
     expect(current_path).to eq '/login'
