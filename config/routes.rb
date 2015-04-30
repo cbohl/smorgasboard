@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
-  root 'application#index'
+  root 'welcome#index'
 
   get '/login' => 'sessions#new'
 
