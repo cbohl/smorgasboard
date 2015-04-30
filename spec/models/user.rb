@@ -12,8 +12,8 @@ describe "User" do
   let!(:comment_1) {Comment.create(user: user, game: game_1, body: "fda;kslfja;lskfk;lasdfls;j;lak")}
   let!(:comment_2) {Comment.create(user: user, game: game_2, body: "puppydog")}
 
-  let!(:usergame_1) {UserGame.create!(user: user, game: game_1)}
-  let!(:usergame_2) {UserGame.create!(user: user, game: game_2)}
+  let!(:user_game_1) {UserGame.create!(user: user, game: game_1)}
+  let!(:user_game_2) {UserGame.create!(user: user, game: game_2)}
 
 
   it "should have many ratings" do
@@ -25,16 +25,16 @@ describe "User" do
   end
 
   it "should have many user_games" do
-    expect(user.user_games).to eq([game_1, game_2])
+    expect(user.user_games).to eq([user_game_1, user_game_2])
   end
 
   it "should have many rated_games" do
     expect(user.rated_games).to eq([game_1, game_2])
   end
 
-  # it "should have many commented_on_games" do
-  #   expect(user.rated_games).to eq([game_1, game_2])
-  # end
+  it "should have many commented_on_games" do
+    expect(user.commented_on_games).to eq([game_1, game_2])
+  end
 
   it "should have many games" do
     expect(user.games).to eq([game_1, game_2])
