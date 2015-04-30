@@ -5,6 +5,8 @@ class Game < ActiveRecord::Base
 	has_many :raters, through: :ratings, source: :user
 	has_many :comments
 	has_many :commenters, through: :comments, source: :user
+	has_many :taggings
+	has_many :tags, through: :taggings
 
 	validates :name, presence: true
 
