@@ -32,6 +32,8 @@ RSpec.feature "User signing up", type: :feature do
     expect(page).to have_content("Welcome")
   end
 
+
+
   scenario "when user enter invalid credentials" do
     visit '/users/new'
     fill_in('Name', :with => "josh")
@@ -44,6 +46,7 @@ RSpec.feature "User signing up", type: :feature do
 end
 
 RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
+  let! (:game) { Game.create(name: "Monopoly", description: "Really fun", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 90, max_duration_of_game: 180) }
   scenario "when user visits the games index" do
     visit '/games'
     expect(current_path).to eq '/login'
