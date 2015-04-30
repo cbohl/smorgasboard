@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by(id: params[:id])
+		@games = @user.owned_games
+		@comments = @user.comments
+		@ratings = @user.ratings
 	end
 
 	private
