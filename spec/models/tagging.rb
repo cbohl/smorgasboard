@@ -5,11 +5,11 @@ describe Tagging do
   let! (:tag) { Tag.create!(name: "Board Games", description: "Type") }
   let! (:tagging) { Tagging.create!(game: game, tag: tag) }
 
-  it "should have many Taggings" do
+  it "should belong to a Tag" do
     expect(tagging.tag).to eq(tag)
   end
 
-  it "should have many Tagged Games" do
+  it "should belong to a Game" do
     expect(tagging.game).to eq(game)
   end
 
