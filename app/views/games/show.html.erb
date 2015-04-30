@@ -20,6 +20,6 @@
   </div>
 
   <div class="comment-form">
-
+    <%= render partial: 'comments/form', locals: {user: current_user, game: @game, comment: @comment} %>
   </div>
 </div>
