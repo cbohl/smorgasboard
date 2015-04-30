@@ -33,11 +33,11 @@ describe "User" do
   end
 
   it "should have many commented_on_games" do
-    expect(user.commented_on_games).to eq([game_1, game_2])
+    expect(user.commented_games).to eq([game_1, game_2])
   end
 
   it "should have many games" do
-    expect(user.games).to eq([game_1, game_2])
+    expect(user.owned_games).to eq([game_1, game_2])
   end
 
 end
