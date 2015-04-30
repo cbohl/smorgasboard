@@ -6,11 +6,11 @@ describe Rating do
   let (:rating) { Rating.create!(user: user, game: game, value: 1) }
 
   it "should belong to a User" do
-    expect(rating.user).to be_a User
+    expect(rating.user).to eq(user)
   end
 
   it "should belong to a game" do
-    expect(rating.game).to be_a Game
+    expect(rating.game).to eq(game)
   end
 
 end
