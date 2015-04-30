@@ -1,4 +1,4 @@
 <%= comment.body %>
 <br>
-<%= link_to "#{comment.user.username}", user_path(comment.user) %>
+<%= link_to "#{comment.user.username}", comment.user %>
 <%= comment.created_at %>
