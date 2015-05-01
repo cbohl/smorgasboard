@@ -20,13 +20,21 @@
           <td><%= @game.min_duration_of_game %> - <%= @game.max_duration_of_game %> minutes</td>
         </tr>
         <tr>
-          <td>Tags:</td>
+        <td>Genres:</td>
           <td>
             <% @tags.each do |tag| %>
-              <%= link_to "#{tag.name}", tag_path(tag) %>
+              <%= link_to "#{tag.name}", tag_path(tag) if tag.category == "genre" %>
             <% end %>
           </td>
         </tr>
+        <tr>
+          <td>Mechanics:</td>
+          <td>
+            <% @tags.each do |tag| %>
+              <%= link_to "#{tag.name}", tag_path(tag) if tag.category == "mechanic" %>
+            <% end %>
+          </td>
+        </tr> 
       </table>
     </div>
     <div class="description">

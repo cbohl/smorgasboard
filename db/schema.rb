@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20150501174814) do
     t.string   "password_digest"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
     t.boolean  "is_admin",        default: false
   end
 
