@@ -46,9 +46,16 @@ button,
 input[type="submit"] {
 	border: 0;
 	border-radius: 3px;
+	margin-top: 12px;
 	padding: 6px;
 	background-color: #3A6206;
 	color: #FFFFFF;
+}
+
+form input,
+form label {
+	margin-top: 6px;
+	display: block;
 }
 
 .container {
