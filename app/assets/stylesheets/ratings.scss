@@ -1,3 +1,32 @@
 // Place all the styles related to the ratings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input[type="radio"] {
+  display: inline-block;
+  -webkit-appearance: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background: image-url('star-false.png');    
+  background-size: 20px; 
+}
+
+input[type="radio"]:checked {
+  display: inline-block;
+  -webkit-appearance: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background: image-url('star-true.png');    
+  background-size: 20px; 
+}
+
+input[type="radio"]:hover {
+  display: inline-block;
+  -webkit-appearance: none;
+  border: none;
+  width: 20px;
+  height: 20px;    
+  background-size: 20px; 
+}
