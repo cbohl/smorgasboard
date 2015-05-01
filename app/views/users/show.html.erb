@@ -1,17 +1,21 @@
 <div class="container">
   <% if current_user == @user %>
-    <h1> Welcome back <%= @user.username %>! </h1>
+    <h1>Welcome back, <%= @user.username %></h1>
   <% else %>
-    <h1>Welcome to <%= @user.username %> homepage!</h1>
+    <h1>Welcome to <%= @user.username %>'s profile</h1>
   <% end %>
 
   <div class="owned-games">
     <h3><%= @user.name %> owns these games:</h3>
 
-    <% if @games.empty? && current_user == @user %>
-      It looks like you have no games in your library. Maybe you should
-      <%= link_to "add some.", games_path %>
+    <% if @games.empty? %>
+      <% if current_user == @user %>
+        <p>It looks like you haven't added any game to your library :(</p>
+      <% else %>
+        <p><%= @user.username %> hasn't added any games to his/her library yet :(</p>
+      <% end %>
     <% end %>
+
     <% @games.each do |game| %>
       <li>
         <%= link_to "#{game.name}", game %>
@@ -21,22 +25,22 @@
         <% end %>
       </li>
     <% end %>
+
+    <%= button_to "Browse and add games to your library!", games_path, method: 'get' if current_user == @user %>
   </div>
 
   <div class="user-comments">
-    <h3><%= @user.name %> has made these comments:</h3>
+    <h3><%= @user.name %>'s Comments:</h3>
     <% @comments.each do |comment| %>
       <li>
         <%= link_to "#{comment.game.name}", comment.game %>
-        <br>
-        <%= comment.body %>
-        <br><br>
+        <p><%= comment.body %></p>
       </li>
     <% end %>
   </div>
 
   <div class="user-ratings">
-    <h3><%= @user.name %> has rated these games:</h3>
+    <h3><%= @user.name %>'s' game ratings:</h3>
     <% @ratings.each do |rating| %>
       <li>
         <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.score %> out of 5

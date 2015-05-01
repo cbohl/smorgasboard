@@ -20,13 +20,21 @@
           <td><%= @game.min_duration_of_game %> - <%= @game.max_duration_of_game %> minutes</td>
         </tr>
         <tr>
-          <td>Tags:</td>
+        <td>Genres:</td>
           <td>
             <% @tags.each do |tag| %>
-              <%= link_to "#{tag.name}", tag_path(tag) %>
+              <%= link_to "#{tag.name}", tag_path(tag) if tag.category == "genre" %>
             <% end %>
           </td>
         </tr>
+        <tr>
+          <td>Mechanics:</td>
+          <td>
+            <% @tags.each do |tag| %>
+              <%= link_to "#{tag.name}", tag_path(tag) if tag.category == "mechanic" %>
+            <% end %>
+          </td>
+        </tr> 
       </table>
     </div>
     <div class="description">
@@ -35,16 +43,13 @@
     </div>
   </div>
 
-  <div class="rage-game">
+  <div class="rate-game">
     <%= render partial: 'ratings/form', locals: { user: @user, game: @game, rating: @rating } %>
   </div>
 
   <div class="add-or-remove-button">
     <% if @owned_game.user == nil %>
-      <%= form_for @owned_game, url: user_games_path do |f| %>
-        <%=hidden_field_tag 'game_id', @game.id %>
-        <%=f.submit "Add Game To My Library"%>
-      <% end %>
+      <%= render partial: 'add_game_button', locals: {game: @game} %>
     <% else %>
       <%= form_for @owned_game, url: user_game_path, method: 'delete' do |f| %>
         <%=hidden_field_tag 'game_id', @game.id %>
