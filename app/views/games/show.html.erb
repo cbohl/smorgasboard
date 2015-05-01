@@ -6,7 +6,7 @@
         <tr>
           <td>Avg. Rating:</td>
         <% if @game.ratings.any? %>
-          <td><%= @game.average_rating %>/5 (<%= @game.ratings.count %> votes)</td>
+          <td><%= "%0.1f" % @game.average_rating %>/5 (<%= @game.ratings.count %> votes)</td>
         <% else %>
           <td>Not yet rated</td>
         <% end %>
