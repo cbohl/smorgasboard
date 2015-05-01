@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 
+
 RSpec.feature "User logging in", type: :feature do
   let!(:user) { User.create!(name: "John", email: "jdees@gmail.com", username: "jdees", password: "password") }
   scenario "when user enter valid credentials" do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
-    click_button('login')
+    click_button('Log In')
     expect(page).to have_content("Welcome")
   end
 
@@ -15,7 +16,7 @@ RSpec.feature "User logging in", type: :feature do
     visit '/login'
     fill_in('Username', :with => "Porkchop")
     fill_in('Password', :with => "Sandwiches")
-    click_button('login')
+    click_button('Log In')
     expect(page).to have_content("invalid")
   end
 end
@@ -53,7 +54,7 @@ RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
     expect(current_path).to eq '/'
   end
   scenario "when user visits a game show page" do
-    visit '/games/1'
+    visit '/games/1'==
     expect(current_path).to eq '/'
   end
   scenario "when user visits the users index" do
@@ -73,3 +74,18 @@ RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
     expect(current_path).to eq '/'
   end
 end
+
+# RSpec.feature "User can click on a letter that is a link to a list of games that start with that letter.", type: :feature do 
+#   let! (:user) {User.create(name: "Josh", username: "Josh", email: 'josh@yahoo.com', password: 'password')}
+
+
+
+#   scenario "letters exist on page" do 
+#     visit '/login'
+#     fill_in('Username', :with => user.username)
+#     fill_in('Password', :with => user.password)
+#     click_button('login')
+#     visit '/games'
+#     expect(page).to have_content("A B C D E F G")
+#   end
+# end
