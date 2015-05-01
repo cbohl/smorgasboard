@@ -3,15 +3,9 @@
     <% @games.each do |game| %>
       <li><%= render partial: 'game', locals: {game: game} %>
         <% unless game.owners.include?(current_user) %>
-          <%= form_for game, url: user_games_path, method: "post" do |f| %>
-            <%=hidden_field_tag 'game_id', game.id %>
-            <%=f.submit "Add game to library"%>
-          <% end %>
+          <%= render partial: 'add_game_button', locals: {game: game} %>
         <% else %>
-          <%= form_for game, url: "user_games/#{game.id}", method: 'delete' do |f| %>
-            <%=hidden_field_tag 'game_id', game.id %>
-            <%=f.submit "Remove owned game"%>
-          <% end %>
+          <%= render partial: 'remove_game_button', locals: {game: game} %>
         <% end %>
       </li>
     <% end %>
