@@ -1,7 +1,10 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.order("name").page(params[:page])
+    # if query parameter is a #...
+    # find the appropriate query 
+    @prefixes = ('A'..'Z').to_a
+    @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
   end
 
   def show
@@ -17,4 +20,7 @@ class GamesController < ApplicationController
       @owned_game = UserGame.new
     end
   end
+
+
+
 end
