@@ -74,18 +74,3 @@ RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
     expect(current_path).to eq '/'
   end
 end
-
-# RSpec.feature "User can click on a letter that is a link to a list of games that start with that letter.", type: :feature do 
-#   let! (:user) {User.create(name: "Josh", username: "Josh", email: 'josh@yahoo.com', password: 'password')}
-
-
-
-#   scenario "letters exist on page" do 
-#     visit '/login'
-#     fill_in('Username', :with => user.username)
-#     fill_in('Password', :with => user.password)
-#     click_button('login')
-#     visit '/games'
-#     expect(page).to have_content("A B C D E F G")
-#   end
-# end
