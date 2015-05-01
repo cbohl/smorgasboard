@@ -24,7 +24,7 @@ battle = Game.create!(name: "Battlestar Scratchlatica", description:"Hidden trai
 		Game.create!(name: rand(0..10).to_s + Faker::Company.name, description: Faker::Company.bs, min_number_of_players: rand(1..10), max_number_of_players: rand( 10..20 ), min_duration_of_game: 10, max_duration_of_game: 60)
 end
 
-100.times do 
+10000.times do 
 	Game.create!(name: Faker::Company.name, description: Faker::Company.bs, min_number_of_players: rand(1..10), max_number_of_players: rand( 10..20 ), min_duration_of_game: 10, max_duration_of_game: 60)
 end
 

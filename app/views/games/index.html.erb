@@ -23,6 +23,8 @@
 </div>
 
 <% if params[:letter] %>
-  <%= paginate @games %>
-  <%= link_to "Back to Top Ten", games_path %>
+  <div class="pagination"> 
+    <%= link_to "Back to Top Ten", games_path %>
+    <%= paginate @games %>
+  </div>
 <% end %>
