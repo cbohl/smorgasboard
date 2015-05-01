@@ -1,3 +1,4 @@
+
 <div class="container">
   <ul>
     <% @games.each do |game| %>
@@ -5,3 +6,5 @@
     <% end %>
   </ul>
 </div>
+
+<%= paginate @games %>

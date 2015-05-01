@@ -20,6 +20,9 @@ domination = Game.create!(name: "Domination", description:"Card building game wh
 
 battle = Game.create!(name: "Battlestar Scratchlatica", description:"Hidden traiter game, don't know who is who, don't even know if you are good or bad. I just don't know", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60)
 
+100.times do 
+	Game.create!(name: Faker::Company.name, description: Faker::Company.bs, min_number_of_players: rand(1..10), max_number_of_players: rand( 10..20 ), min_duration_of_game: 10, max_duration_of_game: 60)
+end
 
 ##############
 # Tags
@@ -100,3 +103,7 @@ Rating.create!(user: paul, game: battle, value: 2)
 Rating.create!(user: paul, game: andoid, value: 3)
 Rating.create!(user: paul, game: agricocacola, value: 4)
 Rating.create!(user: john, game: agricocacola, value: 5)
+
+
+
+
