@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
+    resources :ratings, only: [:create, :update]
   end
 
   resources :tags, only: [:index, :show]

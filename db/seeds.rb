@@ -20,6 +20,10 @@ domination = Game.create!(name: "Domination", description:"Card building game wh
 
 battle = Game.create!(name: "Battlestar Scratchlatica", description:"Hidden traiter game, don't know who is who, don't even know if you are good or bad. I just don't know", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 45, max_duration_of_game: 60)
 
+10.times do 
+		Game.create!(name: rand(0..10).to_s + Faker::Company.name, description: Faker::Company.bs, min_number_of_players: rand(1..10), max_number_of_players: rand( 10..20 ), min_duration_of_game: 10, max_duration_of_game: 60)
+end
+
 100.times do 
 	Game.create!(name: Faker::Company.name, description: Faker::Company.bs, min_number_of_players: rand(1..10), max_number_of_players: rand( 10..20 ), min_duration_of_game: 10, max_duration_of_game: 60)
 end
@@ -91,19 +95,15 @@ Comment.create!(user: john, game: domination, body: "Great Game")
 
 
 ##############
-# Comments
+# Ratings
 ##############
-Rating.create!(user: frank, game: domination, value: 1)
-Rating.create!(user: john, game: domination, value: 2)
-Rating.create!(user: paul, game: domination, value: 3)
-Rating.create!(user: paul, game: life, value: 4)
-Rating.create!(user: john, game: life, value: 5)
-Rating.create!(user: frank, game: battle, value: 1)
-Rating.create!(user: paul, game: battle, value: 2)
-Rating.create!(user: paul, game: andoid, value: 3)
-Rating.create!(user: paul, game: agricocacola, value: 4)
-Rating.create!(user: john, game: agricocacola, value: 5)
-
-
-
-
+Rating.create!(user: frank, game: domination, score: 1)
+Rating.create!(user: john, game: domination, score: 2)
+Rating.create!(user: paul, game: domination, score: 3)
+Rating.create!(user: paul, game: life, score: 4)
+Rating.create!(user: john, game: life, score: 5)
+Rating.create!(user: frank, game: battle, score: 1)
+Rating.create!(user: paul, game: battle, score: 2)
+Rating.create!(user: paul, game: andoid, score: 3)
+Rating.create!(user: paul, game: agricocacola, score: 4)
+Rating.create!(user: john, game: agricocacola, score: 5)

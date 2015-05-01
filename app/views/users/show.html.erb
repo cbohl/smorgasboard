@@ -39,7 +39,7 @@
     <h3><%= @user.name %> has rated these games:</h3>
     <% @ratings.each do |rating| %>
       <li>
-        <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.value %> out of 5
+        <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.score %> out of 5
         <br><br>
       </li>
     <% end %>

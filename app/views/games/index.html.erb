@@ -1,3 +1,7 @@
+<% @prefixes.each do |letter| %>
+  <%= link_to letter, games_path(letter: "#{letter}%") %>
+<% end %> 
+
 <div class="container">
   <ul>
     <% @top_ten_games.each do |game| %>
@@ -41,4 +45,3 @@
 </div>
 
 <%= paginate @games %>
-
