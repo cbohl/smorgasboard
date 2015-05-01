@@ -2,3 +2,7 @@
 <br>
 <%= link_to "#{comment.user.username}", comment.user %>
 <%= comment.created_at %>
+
+<% if current_user && current_user.admin %>
+  <%= link_to 'Destroy', [comment.game, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
