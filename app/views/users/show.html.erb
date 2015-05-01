@@ -1,6 +1,6 @@
 <div class="container">
   <% if current_user == @user %>
-    <h1>Welcome back, <%= @user.username %></h1>
+    <h1>Welcome, <%= @user.username %>!</h1>
   <% else %>
     <h1>Welcome to <%= @user.username %>'s profile</h1>
   <% end %>
@@ -11,6 +11,7 @@
     <% if @games.empty? %>
       <% if current_user == @user %>
         <p>It looks like you haven't added any game to your library :(</p>
+        <%= button_to "Browse and add games to your library!", games_path, method: 'get' if current_user == @user %>
       <% else %>
         <p><%= @user.username %> hasn't added any games to his/her library yet :(</p>
       <% end %>
@@ -26,26 +27,33 @@
       </li>
     <% end %>
 
-    <%= button_to "Browse and add games to your library!", games_path, method: 'get' if current_user == @user %>
   </div>
 
   <div class="user-comments">
     <h3><%= @user.name %>'s Comments:</h3>
-    <% @comments.each do |comment| %>
-      <li>
-        <%= link_to "#{comment.game.name}", comment.game %>
-        <p><%= comment.body %></p>
-      </li>
+    <% if @comments.empty? %>
+      <p>No comments yet!</p>
+    <% else %>
+      <% @comments.each do |comment| %>
+        <li>
+          <%= link_to "#{comment.game.name}", comment.game %>
+          <p><%= comment.body %></p>
+        </li>
+      <% end %>
     <% end %>
   </div>
 
   <div class="user-ratings">
     <h3><%= @user.name %>'s' game ratings:</h3>
-    <% @ratings.each do |rating| %>
-      <li>
-        <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.score %> out of 5
-        <br><br>
-      </li>
+    <% if @ratings.empty? %>
+      <p>No ratings yet!</p>
+    <% else %>
+      <% @ratings.each do |rating| %>
+        <li>
+          <%= link_to "#{rating.game.name}", rating.game %> - <%= rating.score %> out of 5
+          <br><br>
+        </li>
+      <% end %>
     <% end %>
   </div>
 
