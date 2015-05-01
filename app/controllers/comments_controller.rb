@@ -3,14 +3,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.update(user: current_user, game_id: game_params[:game_id])
 
-    if @comment.save
-      redirect_to @comment.game
-    else
-      @game = Game.find_by(id: params[:game_id])
-      @tags = @game.tags
-      @comments = @game.comments
-      render "games/show"
-    end
+    @comment.save
+    redirect_to @comment.game
   end
 
   def destroy
