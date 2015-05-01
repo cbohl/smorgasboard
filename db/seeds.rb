@@ -1,14 +1,14 @@
 ##############
-# Users 
+# Users
 ##############
-john = User.create!(name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password")
+john = User.create!(name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password", is_admin: true)
 
 frank = User.create!(name: "Frank Fees", username: "frank", email: "f@f.com", password: "password")
 
 paul = User.create!(name: "Paul Pees", username: "pauly", email: "p@p.com", password: "password")
 
 #############
-# Games 
+# Games
 #############
 andoid = Game.create!(name: "Andoid: Netfunner", description:"Card game were you fight the evil netfunner corps.", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 15, max_duration_of_game: 45)
 
@@ -40,7 +40,7 @@ space = Tag.create!(name: "Space", description: "A space game is a game where th
 
 
 # ##############
-# # Tagging 
+# # Tagging
 # ##############
 Tagging.create!(game: battle, tag: space)
 Tagging.create!(game: battle, tag: betral)

@@ -14,3 +14,7 @@
     <%= comment.created_at %>
   </div>
 <% end %>
+
+<% if current_user && current_user.is_admin %>
+  <%= link_to 'Destroy', [comment.game, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new,:create,:show,:index]
 
   resources :games, only: [:index, :show] do
-    resources :comments, only: [:create, :new]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :tags, only: [:index, :show]
