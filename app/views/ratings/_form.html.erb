@@ -1,0 +1,19 @@
+<%= form_for [game, rating] do |f| %> 
+  <p>
+    <% if rating.score %>
+      <p>You gave it a rating of <%= rating.score %> out of 5.</p>
+    <% end %>
+    <%= f.label :score, "Rating:" %>
+
+    <%= f.radio_button :score, 1 %>
+    <%= f.radio_button :score, 2 %>
+    <%= f.radio_button :score, 3 %>
+    <%= f.radio_button :score, 4 %>
+    <%= f.radio_button :score, 5 %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

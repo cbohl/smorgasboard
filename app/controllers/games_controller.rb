@@ -13,6 +13,7 @@ class GamesController < ApplicationController
     @tags = @game.tags
     @comments = @game.comments.sort_by(&:created_at).reverse
     @comment = Comment.new
+    @rating = Rating.find_by(user: @user, game: @game) || Rating.new
 
     if @user.owned_games.include?(@game)
       @owned_game = UserGame.find_by(user: current_user, game: @game)

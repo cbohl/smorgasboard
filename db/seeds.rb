@@ -95,19 +95,15 @@ Comment.create!(user: john, game: domination, body: "Great Game")
 
 
 ##############
-# Comments
+# Ratings
 ##############
-Rating.create!(user: frank, game: domination, value: 1)
-Rating.create!(user: john, game: domination, value: 2)
-Rating.create!(user: paul, game: domination, value: 3)
-Rating.create!(user: paul, game: life, value: 4)
-Rating.create!(user: john, game: life, value: 5)
-Rating.create!(user: frank, game: battle, value: 1)
-Rating.create!(user: paul, game: battle, value: 2)
-Rating.create!(user: paul, game: andoid, value: 3)
-Rating.create!(user: paul, game: agricocacola, value: 4)
-Rating.create!(user: john, game: agricocacola, value: 5)
-
-
-
-
+Rating.create!(user: frank, game: domination, score: 1)
+Rating.create!(user: john, game: domination, score: 2)
+Rating.create!(user: paul, game: domination, score: 3)
+Rating.create!(user: paul, game: life, score: 4)
+Rating.create!(user: john, game: life, score: 5)
+Rating.create!(user: frank, game: battle, score: 1)
+Rating.create!(user: paul, game: battle, score: 2)
+Rating.create!(user: paul, game: andoid, score: 3)
+Rating.create!(user: paul, game: agricocacola, score: 4)
+Rating.create!(user: john, game: agricocacola, score: 5)
