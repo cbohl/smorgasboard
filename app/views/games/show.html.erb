@@ -43,8 +43,9 @@
     </div>
   </div>
 
-  <div class="rage-game">
+  <div class="rate-game">
     <%= render partial: 'ratings/form', locals: { user: @user, game: @game, rating: @rating } %>
+    <%= image_tag 'stars.png' %>
   </div>
 
   <div class="add-or-remove-button">
