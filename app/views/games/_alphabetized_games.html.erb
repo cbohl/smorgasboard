@@ -1,7 +1,3 @@
-<% @prefixes.each do |letter| %>
-  <%= link_to letter, games_path(letter: "#{letter}%"), class: 'letter-link' %>
-<% end %> 
-
 <div class="container">
   <ul>
     <% @games.each do |game| %>
@@ -22,7 +18,4 @@
   </ul>
 </div>
 
-<% if params[:letter] %>
-  <%= paginate @games %>
-  <%= link_to "Back to Top Ten", games_path %>
-<% end %>
+<%= paginate @games %>
