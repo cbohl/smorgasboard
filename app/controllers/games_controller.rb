@@ -4,7 +4,7 @@ class GamesController < ApplicationController
     @games = Game.all.select{|game| game unless game.average_rating.nan?}.sort_by(&:average_rating).reverse[0..9]
     @prefixes = ('A'..'Z').to_a
     if params[:letter]
-      @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
+      @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page])
     end
   end
 
