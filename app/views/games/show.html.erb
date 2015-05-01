@@ -1,13 +1,42 @@
 <div class="container">
   <div class="game-info">
     <h1><%= @game.name %></h1>
-    <h3>Average Rating: <%= @game.average_rating %> with <%= @game.ratings.count %> votes.</h3>
-    <h3>Number of Players: <%= @game.min_number_of_players %> - <%= @game.max_number_of_players %></h3>
-    <h3>Duration: <%= @game.min_duration_of_game %> - <%= @game.max_duration_of_game %> minutes</h3>
-    <% @tags.each do |tag| %>
-      <%= link_to "#{tag.name}", tag_path(tag) %>
-    <% end %>
-    <p><%= @game.description %></p>
+    <div class="info-card">
+      <table>
+        <tr>
+          <td>Avg. Rating:</td>
+        <% if @game.ratings.any? %>
+          <td><%= @game.average_rating %>/5 (<%= @game.ratings.count %> votes)</td>
+        <% else %>
+          <td>Not yet rated</td>
+        <% end %>
+        </tr>
+        <tr>
+          <td>Num. Players:</td>
+          <td><%= @game.min_number_of_players %> - <%= @game.max_number_of_players %></td>
+        </tr>
+        <tr>
+          <td>Duration:</td>
+          <td><%= @game.min_duration_of_game %> - <%= @game.max_duration_of_game %> minutes</td>
+        </tr>
+        <tr>
+          <td>Tags:</td>
+          <td>
+            <% @tags.each do |tag| %>
+              <%= link_to "#{tag.name}", tag_path(tag) %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="description">
+      <h3>Description:</h3>
+      <p><%= @game.description %></p>
+    </div>
+  </div>
+
+  <div class="rage-game">
+    <%= render partial: 'ratings/form', locals: { user: @user, game: @game, rating: @rating } %>
   </div>
 
   <div class="add-or-remove-button">
@@ -16,21 +45,21 @@
     <% else %>
       <%= form_for @owned_game, url: user_game_path, method: 'delete' do |f| %>
         <%=hidden_field_tag 'game_id', @game.id %>
-        <%=f.submit "Remove owned game"%>
+        <%=f.submit "Remove From My Library"%>
       <% end %>
     <% end %>
   </div>
 
-  <div class="comment-form">
-    <%= render partial: 'comments/form', locals: {user: current_user, game: @game, comment: @comment} %>
-  </div>
-
   <div class="comments">
-    <ul>
-      <% @comments.each do |comment| %>
-        <li><%= render partial: 'comments/comment', locals: {comment: comment} %></li>
-        <br>
-      <% end %>
-    </ul>
+
+    <h3>Join the discussion!</h3>
+
+    <div class="comment-form">
+      <%= render partial: 'comments/form', locals: {user: current_user, game: @game, comment: @comment} %>
+    </div>
+
+    <% @comments.each do |comment| %>
+      <%= render partial: 'comments/comment', locals: {comment: comment} %>
+    <% end %>
   </div>
 </div>

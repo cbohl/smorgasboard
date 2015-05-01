@@ -7,6 +7,7 @@ header {
   line-height: 70px;
 	height: 70px;
 	background-color: #3F423B;
+	box-shadow: 0px 0px 20px #555;
 }
 
 header h1.brand {
@@ -29,24 +30,78 @@ header nav li{
 }
 
 a {
-	color: #7DC224;
+	color: #4B7B0C;
 	text-decoration: none;
 }
 
 a:hover {
 	color: #9ECC63;
+	text-decoration: underline;
+}
+
+header a {
+	color: #68B600;
+	text-decoration: none;
 }
 
 button,
 input[type="submit"] {
 	border: 0;
 	border-radius: 3px;
+	margin-top: 12px;
 	padding: 6px;
 	background-color: #3A6206;
-	color: #D8F4B4;
+	color: #FFFFFF;
+	box-shadow: 0px 0px 20px #B5B5B5;
+}
+
+form input,
+form label {
+	margin-top: 6px;
+	display: block;
 }
 
 .container {
-	margin: 30px;
+	margin: 20px 60px;
 	max-width: 700px;
+}
+
+.comments {
+	margin-top: 20px;
+	border-top: 1px solid #555;
+}
+
+.comments textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.info-card {
+	display: inline-block;
+	padding: 8px;
+	background-color: #FDFFAD;
+	border: 1px solid #C9CB6D;
+	box-shadow: 0px 0px 20px #B5B5B5;
+}
+
+.info-card td:first-child {
+	font-weight: 900;
+	padding-right: 8px;
+}
+
+.comment {
+	border-bottom: 1px solid #555;
+}
+
+.comment p.owner-stamp,
+.comment p.normal-stamp {
+	margin-bottom: 0;
+	padding: 2px;
+}
+
+.owner-stamp {
+	background-color: #FDFFAD;
+}
+
+.normal-stamp {
 }

@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
 
 
 	def average_rating
-		(self.ratings.map{ |rating| rating.value }.reduce(:+).to_f)/self.ratings.count 
+		(self.ratings.map(&:score).reduce(:+).to_f)/self.ratings.count 
 	end
 
 	def duration_of_game
