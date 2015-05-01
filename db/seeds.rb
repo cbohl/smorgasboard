@@ -1,7 +1,7 @@
 ##############
 # Users 
 ##############
-john = User.create!(name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password")
+john = User.create!(name: "John Dees", username: "jdeesy", email: "j@d.com", password: "password", admin: true)
 
 frank = User.create!(name: "Frank Fees", username: "frank", email: "f@f.com", password: "password")
 
