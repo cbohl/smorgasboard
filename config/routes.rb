@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
+  resources :user_games, only: [:create, :destroy]
+
   root 'welcome#index'
 
   get '/login' => 'sessions#new'
