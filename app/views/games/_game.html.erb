@@ -1,7 +1,11 @@
 <%= link_to "#{game.name}", game %>
-<%= game.average_rating %>
+<% if game.average_rating.nan? %>
+	This game is not yet rated. 
+<% else %>
+	average rating: <%= game.average_rating %> 
+<% end %>
 <br>
-<% comment = game.comments.sample %>
+<% comment = game.comments.count %>
 <% if comment %>
-  Someone Commented: <%= comment.body %>
+  <%= pluralize(comment, 'comment') %>
 <% end %>

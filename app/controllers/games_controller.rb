@@ -3,14 +3,21 @@ class GamesController < ApplicationController
   def index
 
     # @games Game.all.select{|game| game unless game.average_rating.nan?}
-    @top_ten_games = Game.all.select{|game| game unless game.average_rating.nan?}.sort_by(&:average_rating).reverse[0..9]
+    @games = Game.all.select{|game| game unless game.average_rating.nan?}.sort_by(&:average_rating).reverse[0..9]
 
-    # if query parameter is a #...
-    # find the appropriate query 
     @prefixes = ('A'..'Z').to_a
-    @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
-
+    if params[:letter]
+      @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
+    end
+    # if request.xhr?
+    #   render '_alphabetized_games', layout: false
+    # end
   end
+
+  # def alphabetized_games
+  #   @prefixes = ('A'..'Z').to_a
+  #   @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
+  # end
 
   def show
     @user = current_user
