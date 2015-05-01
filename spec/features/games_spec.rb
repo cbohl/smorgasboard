@@ -75,7 +75,7 @@ RSpec.feature "Game is added to the user's library", type: :feature do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
-    click_button('login')
+    click_button('Log In')
 
     visit "/games/1"
     click_button("Add game to library")
@@ -92,7 +92,7 @@ RSpec.feature "Game is removed from the user's library", type: :feature do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
-    click_button('login')
+    click_button('Log In')
 
     visit "/games/2"
     click_button("Add game to library")
