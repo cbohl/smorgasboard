@@ -7,7 +7,7 @@ header {
   line-height: 70px;
 	height: 70px;
 	background-color: #3F423B;
-	box-shadow: 0px 0px 20px #555
+	box-shadow: 0px 0px 20px #555;
 }
 
 header h1.brand {
@@ -31,10 +31,12 @@ header nav li{
 
 a {
 	color: #4B7B0C;
+	text-decoration: none;
 }
 
 a:hover {
 	color: #9ECC63;
+	text-decoration: underline;
 }
 
 header a {
@@ -50,6 +52,7 @@ input[type="submit"] {
 	padding: 6px;
 	background-color: #3A6206;
 	color: #FFFFFF;
+	box-shadow: 0px 0px 20px #B5B5B5;
 }
 
 form input,
@@ -65,7 +68,7 @@ form label {
 
 .comments {
 	margin-top: 20px;
-	border-top: 1px solid black;
+	border-top: 1px solid #555;
 }
 
 .comments textarea {
@@ -77,11 +80,28 @@ form label {
 	display: inline-block;
 	padding: 8px;
 	background-color: #FDFFAD;
-	border-radius: 3px;
-	box-shadow: 0px 0px 20px #888
+	border: 1px solid #C9CB6D;
+	box-shadow: 0px 0px 20px #B5B5B5;
 }
 
 .info-card td:first-child {
 	font-weight: 900;
 	padding-right: 8px;
+}
+
+.comment {
+	border-bottom: 1px solid #555;
+}
+
+.comment p.owner-stamp,
+.comment p.normal-stamp {
+	margin-bottom: 0;
+	padding: 2px;
+}
+
+.owner-stamp {
+	background-color: #FDFFAD;
+}
+
+.normal-stamp {
 }
