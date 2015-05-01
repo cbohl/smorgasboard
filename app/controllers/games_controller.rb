@@ -7,7 +7,7 @@ class GamesController < ApplicationController
 
     @prefixes = ('A'..'Z').to_a
     if params[:letter]
-      @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page]).per(5)
+      @games = Game.where("games.name LIKE :letter", { letter: params[:letter]}).page(params[:page])
     end
     # if request.xhr?
     #   render '_alphabetized_games', layout: false
