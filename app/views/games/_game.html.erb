@@ -1,11 +1,23 @@
-<%= link_to "#{game.name}", game %>
+<td><%= link_to "#{game.name}", game %></td>
+
 <% if game.average_rating.nan? %>
-	This game is not yet rated. 
+	<td>N/A</td>
 <% else %>
-	average rating: <%= game.average_rating %> 
+	<td><%= "%0.1f" % game.average_rating %></td>
 <% end %>
-<br>
-<% comment = game.comments.count %>
-<% if comment %>
-  <%= pluralize(comment, 'comment') %>
-<% end %>
+
+<td><%= game.comments.count %></td>
+
+<td>
+	<% if game.owners.include?(current_user) %>
+	  <%= form_for game, url: "user_games/#{game.id}", method: 'delete' do |f| %>
+	    <%=hidden_field_tag 'game_id', game.id %>
+	    <%=f.submit "Remove Game From Library"%>
+	  <% end %>
+	<% else %>
+	  <%= form_for game, url: user_games_path, method: "post" do |f| %>
+	    <%=hidden_field_tag 'game_id', game.id %>
+	    <%=f.submit "Add Game To Library"%>
+	  <% end %>
+	<% end %>
+</td>

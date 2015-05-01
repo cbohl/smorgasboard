@@ -109,3 +109,25 @@ form label {
 .pagination {
 	display: inline-block;
 }
+
+.letter-prefixes {
+	display: inline-block;
+}
+
+.games {
+	margin-bottom: 20px;
+}
+
+.games form {
+	display: inline-block;
+}
+
+.nav-link {
+	padding-right: 10px;
+}
+
+.games td,
+.games th {
+	text-align: left;
+	padding: 6px;
+}
