@@ -54,7 +54,7 @@ RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
     expect(current_path).to eq '/'
   end
   scenario "when user visits a game show page" do
-    visit '/games/1'==
+    visit '/games/1'
     expect(current_path).to eq '/'
   end
   scenario "when user visits the users index" do
