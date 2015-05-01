@@ -51,17 +51,14 @@
 
   <div class="comments">
 
-  <h3>Join the discussion!</h3>
+    <h3>Join the discussion!</h3>
 
-  <div class="comment-form">
-    <%= render partial: 'comments/form', locals: {user: current_user, game: @game, comment: @comment} %>
-  </div>
+    <div class="comment-form">
+      <%= render partial: 'comments/form', locals: {user: current_user, game: @game, comment: @comment} %>
+    </div>
 
-    <ul>
-      <% @comments.each do |comment| %>
-        <li><%= render partial: 'comments/comment', locals: {comment: comment} %></li>
-        <br>
-      <% end %>
-    </ul>
+    <% @comments.each do |comment| %>
+      <%= render partial: 'comments/comment', locals: {comment: comment} %>
+    <% end %>
   </div>
 </div>
