@@ -72,8 +72,4 @@ RSpec.feature "Unauthenticated user redirected to login page", type: :feature do
     visit '/tags/1'
     expect(current_path).to eq '/'
   end
-  scenario "when user visits a new comment page" do
-    visit '/games/1/comments/new'
-    expect(current_path).to eq '/'
-  end
 end
