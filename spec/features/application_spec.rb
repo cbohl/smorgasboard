@@ -7,7 +7,7 @@ RSpec.feature "User logging in", type: :feature do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
-    click_button('login')
+    click_button('Log In')
     expect(page).to have_content("Welcome")
   end
 
@@ -15,7 +15,7 @@ RSpec.feature "User logging in", type: :feature do
     visit '/login'
     fill_in('Username', :with => "Porkchop")
     fill_in('Password', :with => "Sandwiches")
-    click_button('login')
+    click_button('Log In')
     expect(page).to have_content("invalid")
   end
 end
