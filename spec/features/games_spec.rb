@@ -84,25 +84,20 @@ RSpec.feature "Game is added to the user's library", type: :feature do
   end
 end
 
-RSpec.feature "Game is added to the user's library", type: :feature do
-  # let!(:game) {Game.create!(name: "Monopoly Jr.", description: "Really really fun", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 90, max_duration_of_game: 180)}
-  # let!(:user) {User.create!(name: "John", email: "jdees@gmail.com", username: "jdees", password: "password")}
+RSpec.feature "Game is removed from the user's library", type: :feature do
+  let!(:game) {Game.create!(name: "Monopoly Jr. 3.0", description: "Really really fun", min_number_of_players: 2, max_number_of_players: 4, min_duration_of_game: 90, max_duration_of_game: 180)}
+  let!(:user) {User.create!(name: "John", email: "jdees@gmail.com", username: "jdees", password: "password")}
 
-  scenario "when the user clicks the add game to library button on a game's show page" do
+  scenario "when the user clicks the remove game library button on a game's show page" do
     visit '/login'
     fill_in('Username', :with => user.username)
     fill_in('Password', :with => user.password)
     click_button('login')
 
-    visit "/games/1"
+    visit "/games/2"
     click_button("Add game to library")
+    click_button("Remove owned game")
 
-    expect(user.owned_games).to eq([game])
+    expect(user.owned_games).to eq([])
   end
 end
-
-
-# Game is removed from the user's library
-# when the user clicks the remove game library button on a game's show page
-#     click_button("Remove owned game")
-
