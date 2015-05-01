@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
 
   def index
+    # @games Game.all.select{|game| game unless game.average_rating.nan?}
+    @top_ten_games = Game.all.select{|game| game unless game.average_rating.nan?}.sort_by(&:average_rating).reverse[0..9]
     @games = Game.order("name").page(params[:page])
   end
 
