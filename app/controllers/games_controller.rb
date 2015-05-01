@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find_by(id: params[:id])
     @tags = @game.tags
-    @comments = @game.comments
+    @comments = @game.comments.sort_by(&:created_at).reverse
     @comment = Comment.new
   end
 

@@ -1,4 +1,16 @@
-<%= comment.body %>
-<br>
-<%= link_to "#{comment.user.username}", comment.user %>
-<%= comment.created_at %>
+<% if comment.user.owned_games.include?(comment.game) %>
+  <div class="owner-comment">
+    Comment By Game Owner:<br>
+    <%= comment.body %>
+    <br>
+    <%= link_to "#{comment.user.username}", comment.user %>
+    <%= comment.created_at %>
+  </div>
+<% else %>
+  <div class="normal-comment">
+    <%= comment.body %>
+    <br>
+    <%= link_to "#{comment.user.username}", comment.user %>
+    <%= comment.created_at %>
+  </div>
+<% end %>
